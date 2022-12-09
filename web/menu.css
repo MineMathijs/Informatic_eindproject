@@ -1,5 +1,6 @@
 body{
     background-color: #72F2EB ;
+    text-align: center;
 }
 h1 {
     text-align: center;
@@ -11,20 +12,25 @@ h1 {
 
  header {
     padding: 10px;
-    border: 1px solid black;
-    margin-top: 30px;
+    border: 3px solid black;
+    margin-top: 2%;
     margin-right: 20%;
-    margin-left: 20%;
-   
-    
+    margin-left: 20%; 
  }
 
 #Logo{
-background-color: #72F2EB;
-float: left;
-width: 10%;
-height: 10%;
-
+   background-color: #72F2EB;
+   float: left;
+   margin-left: 1%;
+   margin-top: 1%;
 
 }
 
+#knop{
+   background-color: #00CCC0;
+   border: 2px solid #FF4858;
+   margin-top: 200px;
+   margin-left: 400px;
+   margin-right: 200px;
+   width: 600px;
+}
