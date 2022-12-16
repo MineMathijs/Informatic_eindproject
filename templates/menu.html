@@ -1,29 +1,32 @@
 <title>Start pagina</title>
 <!DOCTYPE html>
-<html lang="nl" >
-    <head>
-        <title> Menu </title>
-        <link rel="stylesheet" type="text/css" href="menu.css">
-        <meta charset="utf-8">
-        <meta name="author" content="Xam, Mathijs, Erine, Fien, Ryan">
-        <meta name="description" content="main menu">
-    </head>
-    <body>
-        <div id="Logo">
-            <img src="logo website.png" alt="Logo" title="The Perfect Schedule-onator 3000" height="90px" width="90px">
-        </div>
-        <header>
-            <h1><b>The Perfect Schedule-onator 3000</b></h1>
-        </header>
-       <div id="knop">
-        <a href="Menu2.html">
-            <h3>Klik <a href="hyperlink.html">hier</a> om te beginnen.</h3>
-        </a>   
-       </div>
-            
+<html lang="nl">
 
-        
-    </body>
+<head>
+    <title> Menu </title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='menu.css')}}">
+    <meta charset="utf-8">
+    <meta name="author" content="Xam, Mathijs, Erine, Fien, Ryan">
+    <meta name="description" content="main menu">
+</head>
+
+<body>
+    <div id="Logo">
+        <img src="{{url_for('static', filename='logo website.png')}}" alt="Logo"
+            title="The Perfect Schedule-onator 3000" height="90px" width="90px">
+    </div>
+    <header>
+        <h1><b>The Perfect Schedule-onator 3000</b></h1>
+    </header>
+    <div id="knop">
+        <a href="/invoer">
+            <h3>Klik hier om te beginnen.</h3>
+        </a>
+    </div>
+
+
+
+</body>
 
 
 

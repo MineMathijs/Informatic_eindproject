@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="nl">
-    <head>
-        <title>Laadpagina</title>
-        <link rel="stylesheet" type="text/css" href="laad.css">
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="author" content="Xam, Mathijs, Erine, Fien, Ryan">
-        <meta name="description" content="laadpagina">
-    </head>
+
+<head>
+    <title>Laadpagina</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='laad.css')}}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Xam, Mathijs, Erine, Fien, Ryan">
+    <meta name="description" content="laadpagina">
+</head>
 
 
-    <body>
+<body>
 
 
- 
-        <header>
-        <img src="logo website.png" alt="Logo" title="Logo" width="90" height="90">
 
-         </header>
-        <h1><b>Loading</b></h1>
-        
-        <img src="loading-gif.gif" alt="Loading" title="Laadgif" width="150" height="188">
+    <header>
+        <img src="{{url_for('static', filename='logo website.png')}}" alt="Logo" title="Logo" width="90" height="90">
 
-    
-    </body>
+    </header>
+    <h1><b>Loading</b></h1>
+
+    <img src="{{url_for('static', filename='loading-gif.gif')}}" alt="Loading" title="Laadgif" height="188">
+
+
+</body>
 
 
 
