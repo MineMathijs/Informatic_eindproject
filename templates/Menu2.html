@@ -20,6 +20,93 @@
         <a href="/laad">laadpagina</a>
     </p>
 
+    <br>
+    <hr>
+    <br><br>
+
+    <form action="/invoer" method="post">
+        <label for="delconfirm">DELETION CONFIRMATION CHECKBOX</label>
+        <input type="checkbox" value="1" name="delconfirm" id="delconfirm"><br>
+        <label for="droptables">delete all database tables</label>
+        <input type="submit" id="droptables" name="droptables" value="DELETE ALL TABLES">
+    </form>
+
+    <br>
+    <hr>
+    <br><br>
+
+    <form action="/invoer" method="post">
+        <label for="dagen">dagen: </label>
+        <input type="number" id="dagen" name="dagen" min="1" max="7" placeholder="max 7" size="6" required>
+        <br>
+        <label for="uuren_per_dag">Les uuren per dag: </label>
+        <input type="number" id="uuren_per_dag" name="uuren_per_dag" min="1" max="15" placeholder="max 15" size="7"
+            required>
+        <br>
+        <input type="submit" id="dag" name="dag" value="Submit">
+        <input type="reset">
+    </form>
+
+    <br>
+    <hr>
+    <br><br>
+
+    <form action="/invoer" method="post">
+        <p>Aantal uur per vak</p>
+        <input type="number" min="0" max="10" name="u1" id="u1" size="7" placeholder="max 10" required>
+        <label for="u1"> - Informatica</label> <br>
+        <input type="number" min="0" max="10" name="u2" id="u2" size="7" placeholder="max 10" required>
+        <label for="u2"> - Wiskunde</label><br>
+        <input type="number" min="0" max="10" name="u3" id="u3" size="7" placeholder="max 10" required>
+        <label for="u3"> - Engels</label><br>
+        <input type="number" min="0" max="10" name="u4" id="u4" size="7" placeholder="max 10" required>
+        <label for="u4"> - Nederlands</label><br>
+        <input type="number" min="0" max="10" name="u5" id="u5" size="7" placeholder="max 10" required>
+        <label for="u5"> - Natuurkunde</label><br>
+        <input type="number" min="0" max="10" name="u6" id="u6" size="7" placeholder="max 10" required>
+        <label for="u6"> - Scheikunde</label><br>
+        <input type="number" min="0" max="10" name="u7" id="u7" size="7" placeholder="max 10" required>
+        <label for="u7"> - Duits</label><br>
+        <input type="number" min="0" max="10" name="u8" id="u8" size="7" placeholder="max 10" required>
+        <label for="u8"> - Frans</label><br>
+        <input type="number" min="0" max="10" name="u9" id="u9" size="7" placeholder="max 10" required>
+        <label for="u9"> - Biologie</label><br>
+        <input type="number" min="0" max="10" name="u10" id="u10" size="7" placeholder="max 10" required>
+        <label for="u10"> -
+            Bedrijfseconomie</label><br>
+        <input type="submit" id="vakuuren" name="vakuuren" value="Submit">
+        <input type="reset">
+    </form>
+
+    <br>
+    <hr>
+    <br><br>
+
+    <form action="/invoer" method="post">
+        <label for="leerlingnmr">leerling nummer: </label>
+        <input type="number" id="leerlingnmr" name="leerlingnmr" min="0" placeholder="leerlingnmr" required>
+        <br>
+        <label for="voornaam">voornaam</label>
+        <input type="text" name="voornaam" id="voornaam" placeholder="voornaam" required>
+        <br>
+        <label for="achternaam">achternaam</label>
+        <input type="text" name="achternaam" id="achternaam" placeholder="achternaam" required>
+        <br>
+        vakken:<br>
+        <input type="checkbox" value="TRUE" name="v1" id="v1"><label for="v1"> - Informatica</label> <br>
+        <input type="checkbox" value="TRUE" name="v2" id="v2"><label for="v2"> - Wiskunde</label><br>
+        <input type="checkbox" value="TRUE" name="v3" id="v3"><label for="v3"> - Engels</label><br>
+        <input type="checkbox" value="TRUE" name="v4" id="v4"><label for="v4"> - Nederlands</label><br>
+        <input type="checkbox" value="TRUE" name="v5" id="v5"><label for="v5"> - Natuurkunde</label><br>
+        <input type="checkbox" value="TRUE" name="v6" id="v6"><label for="v6"> - Scheikunde</label><br>
+        <input type="checkbox" value="TRUE" name="v7" id="v7"><label for="v7"> - Duits</label><br>
+        <input type="checkbox" value="TRUE" name="v8" id="v8"><label for="v8"> - Frans</label><br>
+        <input type="checkbox" value="TRUE" name="v9" id="v9"><label for="v9"> - Biologie</label><br>
+        <input type="checkbox" value="TRUE" name="v10" id="v10"><label for="v10"> - Bedrijfseconomie</label><br>
+        <input type="submit" id="leerling" name="leerling" value="Submit">
+        <input type="reset">
+    </form>
+
 </body>
 
 </html>
