@@ -16,10 +16,23 @@ vakken = np.array([ # dit zijn de vakken, voornu, het eerste getal is het vaknum
 
 # voornu gebruik dit als leeg rooster, 
 leeg_rooster = np.zeros(shape=(5,8), dtype=int)
+def vulrooster(rooster, vakken): # maak een FUNCTIE(dus met def functie_naam(): ...) die iets genaamd is als rooster_vullen
+     size = rooster.shape 
+     for i,a in enumerate(vakken): 
+         for _ in range(int(a[1])): 
+             x = randint(0,size[0]-1) 
+             y = randint(0,size[1]-1) 
+             while rooster[x,y] != 0: # ga ieder vak af (gebruik een for-loop) en kies een random plek in het rooster(met behulp van een while-loop en randint())
+                 x = randint(0,size[0]-1) 
+                 y = randint(0,size[1]-1) 
+             else: 
+                 rooster[x,y] = i 
+     return rooster # doe dit voor het aantal uuren die het vak heeft en return dan een np.array gevuld met vakken 
+ raster = vulrooster(leeg_rooster, vakken) 
+ print(raster)
 
-# maak een FUNCTIE(dus met def functie_naam(): ...) die iets genaamd is als rooster_vullen
-# ga ieder vak af (gebruik een for-loop) en kies een random plek in het rooster(met behulp van een while-loop en randint())
-# doe dit voor het aantal uuren die het vak heeft en return dan een np.array gevuld met vakken 
+
+
 
 # om te kijken of de functie werkt moet je hem eerst callen:
 # gevulde_rooster = rooster_vullen(leeg_rooster, vakken)
@@ -30,6 +43,4 @@ leeg_rooster = np.zeros(shape=(5,8), dtype=int)
 # https://stackoverflow.com/questions/44209368/how-to-change-a-single-value-in-a-numpy-array 
 # https://fundament-online.nl/ 
 # https://www.w3schools.com/python/python_for_loops.asp
-# https://www.w3schools.com/python/python_while_loops.asp 
-
-# probeer, als het lukt, de functie zo te maken dat je GEEN range(len()) gebruikt.
+# https://www.w3schools.com/python/python_while_loops.asp
