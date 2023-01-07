@@ -66,3 +66,7 @@ def about():
 @app.route('/laad')
 def laad():
     return render_template("laad.html")
+
+@app.route('/roosters')
+def roosters():
+    return render_template()
