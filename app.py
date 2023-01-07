@@ -1,6 +1,7 @@
 # .venv\scripts\activate
+# flask --debug run
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import database
 import handling
 
@@ -63,10 +64,15 @@ def about():
     return render_template("menu2.html")
 
 
-@app.route('/laad')
+@app.route('/laad', methods=['post', 'get'])
 def laad():
+    if request.method == 'POST':
+        # de functie die lang duurt kan hier
+        data = handling.delays()
+        return redirect(url_for('roosters'))
     return render_template("laad.html")
+
 
 @app.route('/roosters')
 def roosters():
-    return render_template()
+    return render_template("roosters.html")

@@ -40,3 +40,16 @@ def vak_naar_bin(v1, v2, v3, v4, v5, v6, v7, v8, v9, v10):
         binary += 1
         # print("v10")
     return bin(binary)
+
+
+def delays():
+    a = 10_000_000
+    b = 0
+    for i in range(a):
+        b += i
+    return b
+
+
+def run():
+    a = 1
+    return a

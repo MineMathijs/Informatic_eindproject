@@ -109,3 +109,11 @@ def delete_tables():
             print("vakuur is succesvol verwijderd")
         except:
             print("vakuur kon niet worden verwijderd")
+
+
+def get_daguur():
+
+    conn = sqlite3.connect("gegevens.db")
+
+    with conn:
+        c = conn.cursor()
