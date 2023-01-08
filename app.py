@@ -14,7 +14,7 @@ def index():
 
 
 @app.route('/invoer', methods=['post', 'get'])
-def about():
+def invoer():
     if request.method == 'POST':
         formid = request.form
         if "dag" in formid:
@@ -68,8 +68,11 @@ def about():
 def laad():
     if request.method == 'POST':
         # de functie die lang duurt kan hier
-        data = handling.delays()
-        return redirect(url_for('roosters'))
+        if not database.check_tables():
+            return redirect(url_for('invoer'))
+        else:
+            data = handling.delays()
+            return redirect(url_for('roosters'))
     return render_template("laad.html")
 
 

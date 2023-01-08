@@ -111,6 +111,46 @@ def delete_tables():
             print("vakuur kon niet worden verwijderd")
 
 
+def check_tables():
+
+    conn = sqlite3.connect("gegevens.db")
+
+    with conn:
+        c = conn.cursor()
+
+        try:
+            c.execute("""
+                SELECT *
+                FROM daguur
+            """)
+            print("daguur bestaat")
+        except:
+            print("daguur bestaat niet")
+            return False
+
+        try:
+            c.execute("""
+                SELECT *
+                FROM vakuur
+            """)
+            print("vakuur bestaat")
+        except:
+            print("vakuur bestaat niet")
+            return False
+
+        try:
+            c.execute("""
+                SELECT *
+                FROM leerlingen
+            """)
+            print("leerlingen bestaat")
+        except:
+            print("leerlingen bestaat niet")
+            return False
+        else:
+            return True
+
+
 def get_daguur():
 
     conn = sqlite3.connect("gegevens.db")
