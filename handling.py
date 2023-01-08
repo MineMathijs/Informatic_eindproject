@@ -1,3 +1,6 @@
+import database
+
+
 def vak_naar_bin(v1, v2, v3, v4, v5, v6, v7, v8, v9, v10):
     binary = 0b10
     if v1:
@@ -51,5 +54,9 @@ def delays():
 
 
 def run():
-    a = 1
-    return a
+    daguur = database.get_daguur()
+    print("daguur data: \n", daguur)
+    vakuur = database.get_vakuur()
+    print("vakuur data: \n", vakuur)
+    leerlingen = database.get_leerlingen()
+    print("leerlingen data: \n", leerlingen)

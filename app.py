@@ -72,6 +72,7 @@ def laad():
             return redirect(url_for('invoer'))
         else:
             data = handling.delays()
+            handling.run()
             return redirect(url_for('roosters'))
     return render_template("laad.html")
 

@@ -1,4 +1,5 @@
 import sqlite3
+import numpy as np
 
 
 def update_daguur(dagen: int, uuren_per_dag: int):
@@ -157,3 +158,60 @@ def get_daguur():
 
     with conn:
         c = conn.cursor()
+
+        try:
+            c.execute("""
+                SELECT *
+                FROM daguur
+                LIMIT 1
+            """)
+            datalist = c.fetchall()
+            data = np.array(datalist[0])
+            print("daguur opgehaalt")
+        except:
+            print("kon daguur niet ophalen")
+        else:
+            return data
+
+
+def get_vakuur():
+
+    conn = sqlite3.connect("gegevens.db")
+
+    with conn:
+        c = conn.cursor()
+
+        try:
+            c.execute("""
+                SELECT *
+                FROM vakuur
+                LIMIT 1
+            """)
+            datalist = c.fetchall()
+            data = np.array(datalist[0])
+            print("vakuur opgehaalt")
+        except:
+            print("kon vakuur niet ophalen")
+        else:
+            return data
+
+
+def get_leerlingen():
+
+    conn = sqlite3.connect("gegevens.db")
+
+    with conn:
+        c = conn.cursor()
+
+        try:
+            c.execute("""
+                SELECT *
+                FROM leerlingen
+            """)
+            datalist = c.fetchall()
+            data = np.array(datalist)
+            print("leerlingen opgehaalt")
+        except:
+            print("kon leerlingen niet ophalen")
+        else:
+            return data
