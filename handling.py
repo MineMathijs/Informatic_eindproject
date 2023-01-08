@@ -56,7 +56,7 @@ def delays():
 def run():
     daguur = database.get_daguur()
     print("daguur data: \n", daguur)
-    vakuur = database.get_vakuur()
-    print("vakuur data: \n", vakuur)
+    # vakuur = database.get_vakuur()
+    # print("vakuur data: \n", vakuur)
     leerlingen = database.get_leerlingen()
     print("leerlingen data: \n", leerlingen)

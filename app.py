@@ -2,6 +2,7 @@
 # flask --debug run
 
 from flask import Flask, render_template, request, redirect, url_for
+import numpy as np
 import database
 import handling
 
@@ -11,6 +12,35 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template("menu.html")
+
+
+@app.route('/vakken', methods=['post', 'get'])
+def vakken():
+    if request.method == 'POST':
+        vakid = request.form.get('vakid')
+        vaknaam = request.form.get('vaknaam')
+        vakuur = request.form.get('vakuur')
+        database.update_vakken(vakid, vaknaam, vakuur)
+    vakken = database.get_vakken().tolist()
+    return render_template("vakken.html", vakken=vakken)
+
+
+@app.route('/deletevakken')
+def deletevakken():
+    database.delete_vakken()
+    return redirect(url_for('vakken'))
+
+
+@app.route('/laadvakken', methods=['post', 'get'])
+def laadvakken():
+    database.check_vakken()
+    if request.method == 'POST':
+        # de functie die lang duurt kan hier
+        if not database.check_vakken:
+            return redirect(url_for('vakken'))
+        else:
+            return redirect(url_for('invoer'))
+    return render_template("laadvakken.html")
 
 
 @app.route('/invoer', methods=['post', 'get'])
@@ -29,39 +59,30 @@ def invoer():
             if checkbox:
                 database.delete_tables()
 
-        elif "vakuuren" in formid:
-            u1 = request.form.get('u1')
-            u2 = request.form.get('u2')
-            u3 = request.form.get('u3')
-            u4 = request.form.get('u4')
-            u5 = request.form.get('u5')
-            u6 = request.form.get('u6')
-            u7 = request.form.get('u7')
-            u8 = request.form.get('u8')
-            u9 = request.form.get('u9')
-            u10 = request.form.get('u10')
-            database.update_vakuur(u1, u2, u3, u4, u5, u6, u7, u8, u9, u10)
+        # elif "vakuuren" in formid:
+        #     u1 = request.form.get('u1')
+        #     u2 = request.form.get('u2')
+        #     u3 = request.form.get('u3')
+        #     u4 = request.form.get('u4')
+        #     u5 = request.form.get('u5')
+        #     u6 = request.form.get('u6')
+        #     u7 = request.form.get('u7')
+        #     u8 = request.form.get('u8')
+        #     u9 = request.form.get('u9')
+        #     u10 = request.form.get('u10')
+        #     database.update_vakuur(u1, u2, u3, u4, u5, u6, u7, u8, u9, u10)
 
         elif "leerling" in formid:
             leerlingnmr = request.form.get('leerlingnmr')
             voornaam = request.form.get('voornaam')
             achternaam = request.form.get('achternaam')
-            v1 = bool(request.form.get('v1'))
-            v2 = bool(request.form.get('v2'))
-            v3 = bool(request.form.get('v3'))
-            v4 = bool(request.form.get('v4'))
-            v5 = bool(request.form.get('v5'))
-            v6 = bool(request.form.get('v6'))
-            v7 = bool(request.form.get('v7'))
-            v8 = bool(request.form.get('v8'))
-            v9 = bool(request.form.get('v9'))
-            v10 = bool(request.form.get('v10'))
-            vakbin = handling.vak_naar_bin(
-                v1, v2, v3, v4, v5, v6, v7, v8, v9, v10)
+            vak = np.asarray(request.form.getlist('vak'))
+            print(vak)
             database.update_leerlingen(
-                leerlingnmr, voornaam, achternaam, vakbin)
+                leerlingnmr, voornaam, achternaam, vak)
 
-    return render_template("menu2.html")
+    vakken = database.get_vakken().tolist()
+    return render_template("menu2.html", vakken=vakken)
 
 
 @app.route('/laad', methods=['post', 'get'])
