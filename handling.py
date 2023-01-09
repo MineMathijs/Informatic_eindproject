@@ -63,6 +63,7 @@ def run():
     leerlingen = database.get_leerlingen()
     print("leerlingen data: \n", leerlingen)
 
-    l = leerlingen[0,3]
-    print(l)
+    length = len(leerlingen)
 
+    l = leerlingen[0, 3]
+    print(l, length)
