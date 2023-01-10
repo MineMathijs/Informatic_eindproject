@@ -1,0 +1,77 @@
+<title>Invoer vakken</title>
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <title>Invoervakken</title>
+    <link rel="stylesheet" type="text/css" href="/static/laad.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Xam, Mathijs, Erine, Fien, Ryan">
+    <meta name="description" content="laadpagina">
+</head>
+
+<body>
+    <a href="/">
+        <img src="{{url_for('static', filename='logo website.png')}}" alt="Logo"
+            title="The Perfect Schedule-onator 3000" width="150" height="188">
+    </a>
+
+
+    <br>
+    <hr>
+    <br><br>
+
+    <table>
+        <tr>
+            <th>vak id</th>
+            <th>vak naam</th>
+            <th>vak uuren</th>
+        </tr>
+        {%for vak in vakken%}
+        <tr>
+            <td>{{vak[0]}}</td>
+            <td>{{vak[1]}}</td>
+            <td>{{vak[2]}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+
+    <br><br>
+
+    <form action="/vakken" method="post">
+        <label for="vakid">vak id: </label>
+        <input type="number" id="vakid" name="vakid" min="0" placeholder="vakid" size="12" required>
+        <br>
+        <label for="vaknaam">vak naam: </label>
+        <input type="text" id="vaknaam" name="vaknaam" placeholder="vaknaam" size="16" required>
+        <br>
+        <label for="vakuur">aantal uuren: </label>
+        <input type="number" id="vakuur" name="vakuur" min="0" max="10" placeholder="max 10" size="8" required>
+        <br>
+        <input type="submit" id="dag" name="dag" value="Submit">
+        <input type="reset">
+    </form>
+
+    <br>
+    <hr>
+    <br><br>
+
+    <form action="/deletevakken" method="get">
+        <label for="delconfirm">DELETION CONFIRMATION CHECKBOX</label>
+        <input type="checkbox" value="1" name="delconfirm" id="delconfirm" required><br>
+        <label for="deletevakken">delete all vakken</label>
+        <input type="submit" id="deletevakken" name="deletevakken" value="DELETE all vakken">
+    </form>
+
+    <br>
+    <hr>
+    <br><br>
+
+    <p>
+
+        <a href="/laadvakken">continue</a>
+    </p>
+</body>
+
+</html>
