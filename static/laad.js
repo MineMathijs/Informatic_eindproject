@@ -1,4 +1,4 @@
 function redirect() {
-    console.log("redirecting")
+    console.log("redirecting");
     document.getElementById("redirecting").submit();
 }

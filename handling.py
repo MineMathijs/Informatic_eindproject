@@ -1,5 +1,6 @@
 import database
 import algorithm
+import numpy as np
 
 
 def vak_naar_bin(v1, v2, v3, v4, v5, v6, v7, v8, v9, v10):
@@ -61,14 +62,23 @@ def run():
     uuren = daguur[2]
     print(dagen, uuren)
 
-    leerlingen = database.get_leerlingen()
-    print("leerlingen data: \n", leerlingen)
+    leerlingenRaw = database.get_leerlingen()
+    print("leerlingen data: \n", leerlingenRaw)
 
-    length = len(leerlingen)
+    leerlingen = np.empty((0, 4))
 
-    l = leerlingen[0, 3]
-    print(l, length)
+    for leerling in leerlingenRaw:
+        leerlingVakkenMet0 = np.frombuffer(leerling[3], dtype=np.int16)
+        leerlingVakken = np.array(leerlingVakkenMet0[leerlingVakkenMet0 != 0])
+        newRow = np.array(
+            [[int(leerling[0]), leerling[1], leerling[2], leerlingVakken]], dtype=object)
+        leerlingen = np.append(leerlingen, newRow, 0)
+        print(leerlingVakken)
+    print(leerlingen)
+
 
 if __name__ == "__main__":
     a = run()
     print(a)
+    z = database.get_vakken()
+    # print(z)

@@ -28,6 +28,8 @@
             <th>vak naam</th>
             <th>vak uuren</th>
         </tr>
+        <!-- dit is deels python code want er is een lijst vakken, en voor ieder vak in die lijst is er een rij in de tabel
+        met de gegevens die op de eerste tweede en derde plek staan in de lijst vak -->
         {%for vak in vakken%}
         <tr>
             <td>{{vak[0]}}</td>
@@ -41,10 +43,10 @@
 
     <form action="/vakken" method="post">
         <label for="vakid">vak id: </label>
-        <input type="number" id="vakid" name="vakid" min="0" placeholder="vakid" size="12" required>
+        <input type="number" id="vakid" name="vakid" min="0" max="32767" placeholder="vakid" size="12" required>
         <br>
         <label for="vaknaam">vak naam: </label>
-        <input type="text" id="vaknaam" name="vaknaam" placeholder="vaknaam" size="16" required>
+        <input type="text" id="vaknaam" name="vaknaam" placeholder="vaknaam" size="16" maxlength="16" required>
         <br>
         <label for="vakuur">aantal uuren: </label>
         <input type="number" id="vakuur" name="vakuur" min="0" max="10" placeholder="max 10" size="8" required>

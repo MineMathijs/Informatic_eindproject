@@ -105,9 +105,11 @@ def update_daguur(dagen: int, uuren_per_dag: int):
             print("error with insering data into daguur")
 
 
-def update_leerlingen(leerlingnmr: int, voornaam: str, achternaam: int, vakken: list):
+def update_leerlingen(leerlingnmr: int, voornaam: str, achternaam: int, vakken: np.array):
 
     conn = sqlite3.connect("gegevens.db")
+
+    vakkenbin = vakken.astype(np.int16).tobytes()
 
     with conn:
         c = conn.cursor()
@@ -116,14 +118,14 @@ def update_leerlingen(leerlingnmr: int, voornaam: str, achternaam: int, vakken: 
                 leerlingnmr INTEGER UNIQUE,
                 voor_naam TEXT,
                 achter_naam TEXT,
-                vakken BLOB
+                vakken
             );
         """)
         try:
             c.execute("""
                 REPLACE INTO leerlingen (leerlingnmr, voor_naam, achter_naam, vakken)
                 VALUES (?,?,?,?)
-            """, (leerlingnmr, voornaam, achternaam, vakken))
+            """, (leerlingnmr, voornaam, achternaam, vakkenbin))
             print("Sucsesfully updated database leerlingen")
         except:
             print("error with insering data into leerlingen")

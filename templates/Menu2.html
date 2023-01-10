@@ -22,7 +22,7 @@
     <hr>
     <br><br>
 
-    <form action="/invoer" method="post">
+    <form action="/invoer" method="post"> <!-- https://www.w3schools.com/html/html_forms.asp -->
         <label for="delconfirm">DELETION CONFIRMATION CHECKBOX</label>
         <input type="checkbox" value="1" name="delconfirm" id="delconfirm"><br>
         <label for="droptables">delete all database tables</label>
@@ -49,40 +49,9 @@
     <hr>
     <br><br>
 
-    <!-- <form action="/invoer" method="post">
-        <p>Aantal uur per vak</p>
-        <input type="number" min="0" max="10" name="u1" id="u1" size="7" placeholder="max 10" required>
-        <label for="u1"> - Informatica</label> <br>
-        <input type="number" min="0" max="10" name="u2" id="u2" size="7" placeholder="max 10" required>
-        <label for="u2"> - Wiskunde</label><br>
-        <input type="number" min="0" max="10" name="u3" id="u3" size="7" placeholder="max 10" required>
-        <label for="u3"> - Engels</label><br>
-        <input type="number" min="0" max="10" name="u4" id="u4" size="7" placeholder="max 10" required>
-        <label for="u4"> - Nederlands</label><br>
-        <input type="number" min="0" max="10" name="u5" id="u5" size="7" placeholder="max 10" required>
-        <label for="u5"> - Natuurkunde</label><br>
-        <input type="number" min="0" max="10" name="u6" id="u6" size="7" placeholder="max 10" required>
-        <label for="u6"> - Scheikunde</label><br>
-        <input type="number" min="0" max="10" name="u7" id="u7" size="7" placeholder="max 10" required>
-        <label for="u7"> - Duits</label><br>
-        <input type="number" min="0" max="10" name="u8" id="u8" size="7" placeholder="max 10" required>
-        <label for="u8"> - Frans</label><br>
-        <input type="number" min="0" max="10" name="u9" id="u9" size="7" placeholder="max 10" required>
-        <label for="u9"> - Biologie</label><br>
-        <input type="number" min="0" max="10" name="u10" id="u10" size="7" placeholder="max 10" required>
-        <label for="u10"> -
-            Bedrijfseconomie</label><br>
-        <input type="submit" id="vakuuren" name="vakuuren" value="Submit">
-        <input type="reset">
-    </form>
-
-    <br>
-    <hr>
-    <br><br> -->
-
     <form action="/invoer" method="post">
         <label for="leerlingnmr">leerling nummer: </label>
-        <input type="number" id="leerlingnmr" name="leerlingnmr" min="0" placeholder="leerlingnmr" required>
+        <input type="number" id="leerlingnmr" name="leerlingnmr" min="0" max="32767" placeholder="leerlingnmr" required>
         <br>
         <label for="voornaam">voornaam</label>
         <input type="text" name="voornaam" id="voornaam" placeholder="voornaam" required>
@@ -91,6 +60,9 @@
         <input type="text" name="achternaam" id="achternaam" placeholder="achternaam" required>
         <br>
         vakken:<br>
+        <!-- dit is deels python code want er is een lijst vakken, en voor ieder vak in die lijst is een checkbox en label, 
+        de checkbox heeft de waarde en id van wat er op de eerste plek staat in de lijst vak en in de lable staat wat er op
+        de tweede plek staat in de lijst vak-->
         {%for vak in vakken%}
         <input type="checkbox" value="{{vak[0]}}" name="vak" id="{{vak[0]}}">
         <label for="{{vak[0]}}"> - {{vak[1]}}</label>
