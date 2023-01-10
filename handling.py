@@ -1,4 +1,5 @@
 import database
+import algorithm
 
 
 def vak_naar_bin(v1, v2, v3, v4, v5, v6, v7, v8, v9, v10):
@@ -67,3 +68,7 @@ def run():
 
     l = leerlingen[0, 3]
     print(l, length)
+
+if __name__ == "__main__":
+    a = run()
+    print(a)

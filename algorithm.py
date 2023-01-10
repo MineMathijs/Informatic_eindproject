@@ -16,13 +16,15 @@ def vulRooster(leegrooster: np.array, vakken: np.array):
         print(vak)
         for _ in range(int(vak[2])):
             if options.any():
+                print(options[0])
                 rooster[options[0]] = int(vak[0])
-                np.delete(options, 0)
-            rooster.shape(np.shape(leegrooster))
-            return rooster
+                options = options[1:]
+                print(options[0])
+    rooster.shape = np.shape(leegrooster)
+    return rooster
 
-
-vak = np.array([[1, "Informatica", 3], [2, "Natuurkunde", 4]])
-leeg = leegRooster(5, 8)
-vul = vulRooster(leeg, vak)
-print(vul)
+if __name__ == "__main__":
+    vak = np.array([[1, "Informatica", 3], [2, "Natuurkunde", 4]])
+    leeg = leegRooster(5, 8)
+    vul = vulRooster(leeg, vak)
+    print(vul)
