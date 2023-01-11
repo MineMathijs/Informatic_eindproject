@@ -1,0 +1,86 @@
+<title>Invoer pagina</title>
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <title>Invoerpagina</title>
+    <link rel="stylesheet" type="text/css" href="/static/laad.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Xam, Mathijs, Erine, Fien, Ryan">
+    <meta name="description" content="laadpagina">
+</head>
+
+<body>
+    <a href="/">
+        <img src="{{url_for('static', filename='logo website.png')}}" alt="Logo"
+            title="The Perfect Schedule-onator 3000" width="150" height="188">
+    </a>
+
+
+    <br>
+    <hr>
+    <br><br>
+
+    <form action="/invoer" method="post"> <!-- https://www.w3schools.com/html/html_forms.asp -->
+        <label for="delconfirm">DELETION CONFIRMATION CHECKBOX</label>
+        <input type="checkbox" value="1" name="delconfirm" id="delconfirm"><br>
+        <label for="droptables">delete all database tables</label>
+        <input type="submit" id="droptables" name="droptables" value="DELETE ALL TABLES">
+    </form>
+
+    <br>
+    <hr>
+    <br><br>
+
+    <form action="/invoer" method="post">
+        <label for="dagen">dagen: </label>
+        <input type="number" id="dagen" name="dagen" min="1" max="7" placeholder="max 7" size="6" required>
+        <br>
+        <label for="uuren_per_dag">Les uuren per dag: </label>
+        <input type="number" id="uuren_per_dag" name="uuren_per_dag" min="1" max="15" placeholder="max 15" size="7"
+            required>
+        <br>
+        <input type="submit" id="dag" name="dag" value="Submit">
+        <input type="reset">
+    </form>
+
+    <br>
+    <hr>
+    <br><br>
+
+    <form action="/invoer" method="post">
+        <label for="leerlingnmr">leerling nummer: </label>
+        <input type="number" id="leerlingnmr" name="leerlingnmr" min="0" max="32767" placeholder="leerlingnmr" required>
+        <br>
+        <label for="voornaam">voornaam</label>
+        <input type="text" name="voornaam" id="voornaam" placeholder="voornaam" required>
+        <br>
+        <label for="achternaam">achternaam</label>
+        <input type="text" name="achternaam" id="achternaam" placeholder="achternaam" required>
+        <br>
+        vakken:<br>
+        <!-- dit is deels python code want er is een lijst vakken, en voor ieder vak in die lijst is een checkbox en label, 
+        de checkbox heeft de waarde en id van wat er op de eerste plek staat in de lijst vak en in de lable staat wat er op
+        de tweede plek staat in de lijst vak-->
+        {%for vak in vakken%}
+        <input type="checkbox" value="{{vak[0]}}" name="vak" id="{{vak[0]}}">
+        <label for="{{vak[0]}}"> - {{vak[1]}}</label>
+        <br>
+        {%endfor%}
+        <input type="submit" id="leerling" name="leerling" value="Submit">
+        <input type="reset">
+    </form>
+
+    <br>
+    <hr>
+    <br><br>
+
+    <p>
+        <a href="/laad">continue</a>
+    </p>
+
+
+</body>
+
+</html>
