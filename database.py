@@ -185,13 +185,13 @@ def delete_tables():
         except:
             print("leerlingen kon niet worden verwijderd")
 
-        try:
-            c.execute("""
-                DROP TABLE IF EXISTS vakuur
-            """)
-            print("vakuur is succesvol verwijderd")
-        except:
-            print("vakuur kon niet worden verwijderd")
+        # try:
+        #     c.execute("""
+        #         DROP TABLE IF EXISTS vakuur
+        #     """)
+        #     print("vakuur is succesvol verwijderd")
+        # except:
+        #     print("vakuur kon niet worden verwijderd")
 
 
 def check_tables():
