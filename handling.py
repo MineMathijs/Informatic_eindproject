@@ -55,8 +55,8 @@ def delays():
     return b
 
 
-def alleroosters(dagen: int, uuren: int, leerlingen: np.array, ):
-    a = 0
+def alleRoosters(dagen: int, uuren: int, leerlingen: np.array):
+    data = np.array([])
 
 
 def run():
