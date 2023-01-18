@@ -67,7 +67,7 @@ def run():
     # print(dagen, uuren)
 
     vakData = database.get_vakken()
-    vakkendic = {int(vak[0]): vak[1:] for vak in vakData}
+    vakkendic = {int(vak[0]): vak[0::] for vak in vakData}
 
     leerlingenRaw = database.get_leerlingen()
     # print("leerlingen data: \n", leerlingenRaw)
@@ -85,17 +85,33 @@ def run():
 
     alleRoosters = np.empty((0,3))
 
+
     for leerling in leerlingen:
         persoon = np.array([leerling[0], leerling[1], leerling[2]])
         rooster = algorithm.leegRooster(dagen,uuren)
-        vakken = np.array[]
 
+        keuzes = leerling[3]
+        vakken = np.empty((0,3), dtype=object)
+        for keuze in keuzes:
+            arr = vakkendic[keuze]
+            vakken = np.append(vakken, [arr], 0)
+        # print(vakken)
 
         newRow = np.array([[persoon,rooster,vakken]], dtype=object)
         alleRoosters = np.append(alleRoosters, newRow, 0)
 
-    
     # print(alleRoosters)
+
+    for i, rooster in enumerate(alleRoosters):
+        goedrooster = algorithm.geneticAlgorithm(rooster)
+        alleRoosters[i,1] = goedrooster
+
+    
+    print("--------------------------------------------")
+    print(alleRoosters)
+    print("--------------------------------------------")
+
+
 
 if __name__ == "__main__":
     a = run()
