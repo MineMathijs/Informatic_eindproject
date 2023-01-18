@@ -18,15 +18,28 @@
             title="The Perfect Schedule-onator 3000" width="150" height="188">
     </a>
 
+    {%for leerling in roosters%}
+    <p>Naam: {{leerling[0][1]}} {{leerling[0][2]}}</p>
+    <p>Leerling ID: {{leerling[0][0]}}<p>
+      <table border="1">
+        {%for uur in leerling[1]%}
+          <tr>
+            <td>{{loop.index}}</td>
+            {%for dag in uur%}
+              <td>{{dag}}</td>
+            {%endfor%}
+          </tr>
+        {%endfor%}
+      </table>
+    {%endfor%}
+
+
     <p>
         NAAM: Jacopo Saragozza 
     </p>
-
-
     <p> 
         LEERLING ID: 284937
     </p>
-
     <table border="1">
         <tr>
           <td>-</td>
