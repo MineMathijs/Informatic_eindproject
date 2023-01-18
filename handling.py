@@ -61,13 +61,16 @@ def alleRoosters(dagen: int, uuren: int, leerlingen: np.array):
 
 def run():
     daguur = database.get_daguur()
-    print("daguur data: \n", daguur)
+    # print("daguur data: \n", daguur)
     dagen = daguur[1]
     uuren = daguur[2]
-    print(dagen, uuren)
+    # print(dagen, uuren)
+
+    vakData = database.get_vakken()
+    vakkendic = {int(vak[0]): vak[1:] for vak in vakData}
 
     leerlingenRaw = database.get_leerlingen()
-    print("leerlingen data: \n", leerlingenRaw)
+    # print("leerlingen data: \n", leerlingenRaw)
 
     leerlingen = np.empty((0, 4))
 
@@ -77,12 +80,25 @@ def run():
         newRow = np.array(
             [[int(leerling[0]), leerling[1], leerling[2], leerlingVakken]], dtype=object)
         leerlingen = np.append(leerlingen, newRow, 0)
-        print(leerlingVakken)
-    print(leerlingen)
+        # print(leerlingVakken)
+    # print(leerlingen)
 
+    alleRoosters = np.empty((0,3))
+
+    for leerling in leerlingen:
+        persoon = np.array([leerling[0], leerling[1], leerling[2]])
+        rooster = algorithm.leegRooster(dagen,uuren)
+        vakken = np.array[]
+
+
+        newRow = np.array([[persoon,rooster,vakken]], dtype=object)
+        alleRoosters = np.append(alleRoosters, newRow, 0)
+
+    
+    # print(alleRoosters)
 
 if __name__ == "__main__":
     a = run()
-    print(a)
-    z = database.get_vakken()
+    # print(a)
+    # z = database.get_vakken()
     # print(z)
