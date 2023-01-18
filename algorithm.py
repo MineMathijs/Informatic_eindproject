@@ -35,10 +35,17 @@ def geneticAlgorithm(eenRooster):
     print(population)
 
     for i, rooster in enumerate(population):
-        fitness = calculate_fitness(rooster[0])
+        fitness = calcFitness(startFitness,rooster[0])
         population[i,1] = fitness
     return population[0]
-    
+
+def calcFitness(startFitness,rooster):
+    fitness = startFitness
+    for i, dag in enumerate(rooster):
+        for j, uur in enumerate(dag):
+            if uur in dag[:j-1]+dag[j+1:]:
+                print("2x in een dag")
+                fitness -= 50
 
 if __name__ == "__main__":
     Rooster = np.array([
