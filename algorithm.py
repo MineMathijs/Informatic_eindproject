@@ -11,20 +11,50 @@ def vulRooster(leegrooster: np.array, vakken: np.array):
     rooster = np.ravel(leegrooster)
     options = np.arange(rooster.size)
     shuffle(options)
-    print(options)
+    # print(options)
     for vak in vakken:
-        print(vak)
+        # print(vak)
         for _ in range(int(vak[2])):
             if options.any():
-                print(options[0])
+                # print(options[0])
                 rooster[options[0]] = int(vak[0])
                 options = options[1:]
-                print(options[0])
+                # print(options[0])
     rooster.shape = np.shape(leegrooster)
     return rooster
 
+def geneticAlgorithm(eenRooster):
+    vakken = eenRooster[2]
+    leegRooster = eenRooster[1]
+    populationSize = 500
+    fitnesStop = 1500
+    maxGenerations = 200
+    startFitness = 1000
+
+    population = np.array([[vulRooster(leegRooster,vakken), startFitness] for _ in range(populationSize)], dtype=object)
+    print(population)
+
+    for i, rooster in enumerate(population):
+        fitness = calculate_fitness(rooster[0])
+        population[i,1] = fitness
+    return population[0]
+    
+
 if __name__ == "__main__":
-    vak = np.array([[1, "Informatica", 3], [2, "Natuurkunde", 4]])
-    leeg = leegRooster(5, 8)
-    vul = vulRooster(leeg, vak)
-    print(vul)
+    Rooster = np.array([
+        np.array(['4', 'John', 'Doe'], dtype='<U11'),
+        np.array([[0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0]], dtype=np.int8),
+        np.array([['1', 'Informatica', '4'],
+                ['2', 'Natuurkunde', '5'],
+                ['3', 'Engels', '5'],
+                ['4', 'Scheikunde', '3'],
+                ['5', 'Duits', '2'],
+                ['6', 'Wiskunde', '6'],
+                ['7', 'Nederlands', '3']], dtype=object)], dtype=object)
+
+    algor = geneticAlgorithm(Rooster)
+    print(algor)
