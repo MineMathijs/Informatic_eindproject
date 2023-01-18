@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import numpy as np
 import database
 import handling
+import algorithm2	
 
 app = Flask(__name__)
 
@@ -93,11 +94,16 @@ def laad():
             return redirect(url_for('invoer'))
         else:
             data = handling.delays()
-            handling.run()
+            global alleRoosters
+            # alleRoosters = handling.run()
+            alleRoosters = np.array([[np.array(['2134', 'dfgs', 'sdgdsf'], dtype='<U11').tolist(),        np.array([[0, 3, 0, 1, 0, 2, 0, 0],               [0, 0, 2, 0, 4, 0, 6, 0],               [0, 0, 0, 5, 0, 0, 7, 0],               [0, 0, 0, 0, 0, 0, 0, 0],               [0, 0, 0, 0, 0, 0, 0, 0]], dtype=np.int8).tolist(),        np.array([['1', 'Informatica', '4'],               ['4', 'Scheikunde', '3'],               ['6', 'Wiskunde', '6'],               ['7', 'Nederlands', '3']], dtype=object).tolist()],       [np.array(['4', 'John', 'Doe'], dtype='<U11').tolist(),        np.array([[0, 0, 0, 0, 0, 0, 0, 0],               [0, 0, 0, 0, 0, 0, 0, 0],               [0, 0, 0, 0, 0, 0, 0, 0],               [0, 0, 0, 0, 0, 0, 0, 0],               [0, 0, 0, 0, 0, 0, 0, 0]], dtype=np.int8).tolist(),        np.array([['1', 'Informatica', '4'],               ['2', 'Natuurkunde', '5'],               ['3', 'Engels', '5'],               ['4', 'Scheikunde', '3'],               ['5', 'Duits', '2'],               ['6', 'Wiskunde', '6'],               ['7', 'Nederlands', '3']], dtype=object).tolist()],       [np.array(['2342', 'non', 'vak'], dtype='<U11').tolist(),        np.array([[0, 0, 0, 0, 0, 0, 0, 0],               [0, 0, 0, 0, 0, 0, 0, 0],               [0, 0, 0, 0, 0, 0, 0, 0],               [0, 0, 0, 0, 0, 0, 0, 0],               [0, 0, 0, 0, 0, 0, 0, 0]], dtype=np.int8).tolist(),        np.array([], dtype=object).tolist()],       [np.array(['32758', 'struis', 'vogel'], dtype='<U11').tolist(),        np.array([[0, 0, 0, 0, 0, 0, 0, 0],               [0, 0, 0, 0, 0, 0, 0, 0],               [0, 0, 0, 0, 0, 0, 0, 0],               [0, 0, 0, 0, 0, 0, 0, 0],               [0, 0, 0, 0, 0, 0, 0, 0]], dtype=np.int8).tolist(),        np.array([['1', 'Informatica', '4'],               ['7', 'Nederlands', '3'],               ['8', 'Frans', '3']], dtype=object).tolist()]], dtype=object).tolist()
+            # alleRoosters = algorithm2.printrooster()
             return redirect(url_for('roosters'))
     return render_template("laad.html")
 
 
 @app.route('/roosters')
 def roosters():
-    return render_template("roosters.html")
+
+    global alleRoosters
+    return render_template("roosters.html", roosters=alleRoosters)

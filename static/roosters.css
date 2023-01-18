@@ -9,8 +9,8 @@ table {
     text-align: center;
     margin: auto;
     border: 2px dotted black;
-    margin-left: 33%;
-    margin-right: 15%;
+    /* margin-left: 33%;
+    margin-right: 15%; */
     margin-top: 5%;
     width: 200px;
     height: 200px;
