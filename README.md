@@ -35,6 +35,7 @@ Install dependencies
 ```bash
   pip install numpy
   pip install flask
+  pip install sqlite3
 ```
 
 Start de server
