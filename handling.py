@@ -1,6 +1,7 @@
 import database
 import algorithm
 import numpy as np
+import algorithm2
 
 
 # def vak_naar_bin(v1, v2, v3, v4, v5, v6, v7, v8, v9, v10):
@@ -91,7 +92,7 @@ def run():
         rooster = algorithm.leegRooster(dagen,uuren)
 
         keuzes = leerling[3]
-        vakken = np.empty((0,3), dtype=object)
+        vakken = np.array([[0,"-",0]], dtype=object)
         for keuze in keuzes:
             arr = vakkendic[keuze]
             vakken = np.append(vakken, [arr], 0)
@@ -111,6 +112,15 @@ def run():
     print(alleRoosters)
     print("--------------------------------------------")
 
+    for i, rooster in enumerate(alleRoosters):
+        naamRooster = algorithm2.printrooster(rooster[1], vakkendic)
+        alleRoosters[i,1] = naamRooster
+    
+    print("--------------------------------------------")
+    print(alleRoosters)
+    print("--------------------------------------------")
+
+    return alleRoosters
 
 
 if __name__ == "__main__":

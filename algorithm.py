@@ -86,7 +86,7 @@ def geneticAlgorithm(eenRooster):
     populationSize = 1000
     fitnesStop = 1500
     selectBest = 50
-    maxGenerations = 200
+    maxGenerations = 75
     startFitness = 1000
     crossoverSize = 500
     mutateChance = 0.85
@@ -103,9 +103,9 @@ def geneticAlgorithm(eenRooster):
 
     population = sortArr(population)
     generation = 0
-    print(f"best solution for generation {generation}: \n {population[0]}")
+    # print(f"best solution for generation {generation}: \n {population[0]}")
 
-    while population[0, 1] <= fitnesStop and generation <= maxGenerations:
+    while population[0, 1] < fitnesStop and generation < maxGenerations:
         lastbest = copy.deepcopy(population[:selectBest])
         newPopulation = np.array([row[0] for row in lastbest])
 
@@ -134,9 +134,9 @@ def geneticAlgorithm(eenRooster):
                                for gene in newPopulation], dtype=object)
         population = sortArr(population)
         generation += 1
-        print(f"best solution for generation {generation}: \n {population[0]}")
+        # print(f"best solution for generation {generation}: \n {population[0]}")
 
-    return population[0]
+    return population[0,0]
 
 
 if __name__ == "__main__":

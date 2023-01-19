@@ -22,6 +22,27 @@
     <p>Naam: {{leerling[0][1]}} {{leerling[0][2]}}</p>
     <p>Leerling ID: {{leerling[0][0]}}<p>
       <table border="1">
+        <tr>
+          <th>-</th>
+          {% if leerling[1][0]|length == 7 %}
+              <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th> <th>Thursday</th> <th>Friday</th> <th>Saturday</th> <th>Sunday</th>
+          {% elif leerling[1][0]|length == 1 %}
+              <th>Monday</th>
+          {% elif leerling[1][0]|length == 2 %}
+              <th>Monday</th> <th>Tuesday</th>
+          {% elif leerling[1][0]|length == 3 %}
+              <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th>
+          {% elif leerling[1][0]|length == 4 %}
+              <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th> <th>Thursday</th>
+          {% elif leerling[1][0]|length == 5 %}
+              <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th> <th>Thursday</th> <th>Friday</th>
+          {% elif leerling[1][0]|length == 6 %}
+              <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th> <th>Thursday</th> <th>Friday</th> <th>Saturday</th>
+          {% else %}
+              <th>Invalid list size</th>
+          {% endif %}
+
+        </tr>
         {%for uur in leerling[1]%}
           <tr>
             <td>{{loop.index}}</td>
@@ -31,10 +52,11 @@
           </tr>
         {%endfor%}
       </table>
+      <hr>
     {%endfor%}
 
 
-    <p>
+    <!-- <p>
         NAAM: Jacopo Saragozza 
     </p>
     <p> 
@@ -113,7 +135,7 @@
             <td>Cel 5</td>
             <td>Cel 6</td>
           </tr>
-      </table>
+      </table> -->
 </body>
 
 </html>
