@@ -25,19 +25,19 @@
         <tr>
           <th>-</th>
           {% if leerling[1][0]|length == 7 %}
-              <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th> <th>Thursday</th> <th>Friday</th> <th>Saturday</th> <th>Sunday</th>
+              <th>Maandag</th> <th>Dinsdag</th> <th>Woensdag</th> <th>Donderdag</th> <th>Vrijdag</th> <th>Zaterdag</th> <th>Zondag</th>
           {% elif leerling[1][0]|length == 1 %}
-              <th>Monday</th>
+              <th>Maandag</th>
           {% elif leerling[1][0]|length == 2 %}
-              <th>Monday</th> <th>Tuesday</th>
+              <th>Maandag</th> <th>Dinsdag</th>
           {% elif leerling[1][0]|length == 3 %}
-              <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th>
+              <th>Maandag</th> <th>Dinsdag</th> <th>Woensdag</th>
           {% elif leerling[1][0]|length == 4 %}
-              <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th> <th>Thursday</th>
+              <th>Maandag</th> <th>Dinsdag</th> <th>Woensdag</th> <th>Donderdag</th>
           {% elif leerling[1][0]|length == 5 %}
-              <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th> <th>Thursday</th> <th>Friday</th>
+              <th>Maandag</th> <th>Dinsdag</th> <th>Woensdag</th> <th>Donderdag</th> <th>Vrijdag</th>
           {% elif leerling[1][0]|length == 6 %}
-              <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th> <th>Thursday</th> <th>Friday</th> <th>Saturday</th>
+              <th>Maandag</th> <th>Dinsdag</th> <th>Woensdag</th> <th>Donderdag</th> <th>Vrijdag</th> <th>Zaterdag</th>
           {% else %}
               <th>Invalid list size</th>
           {% endif %}
